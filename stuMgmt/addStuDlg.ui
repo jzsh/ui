@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>453</width>
+    <width>382</width>
     <height>537</height>
    </rect>
   </property>
@@ -60,7 +60,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="leName"/>
      </item>
     </layout>
    </item>
@@ -86,7 +86,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="leID"/>
      </item>
     </layout>
    </item>
@@ -106,17 +106,26 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton">
+      <widget class="QRadioButton" name="rbMale">
        <property name="text">
         <string>Male</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">btnGrpGender</string>
+       </attribute>
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_2">
+      <widget class="QRadioButton" name="rbFemale">
        <property name="text">
         <string>Female</string>
        </property>
+       <attribute name="buttonGroup">
+        <string notr="true">btnGrpGender</string>
+       </attribute>
       </widget>
      </item>
      <item>
@@ -156,7 +165,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="cbbAge"/>
      </item>
     </layout>
    </item>
@@ -182,7 +191,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_2"/>
+      <widget class="QComboBox" name="cbbDepat"/>
      </item>
     </layout>
    </item>
@@ -210,31 +219,43 @@
      <item>
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="1">
-        <widget class="QCheckBox" name="checkBox_3">
+        <widget class="QCheckBox" name="cbBadminton">
          <property name="text">
           <string>Badminton</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">btnGrpHobbies</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QCheckBox" name="checkBox_2">
+        <widget class="QCheckBox" name="cbVolleyball">
          <property name="text">
           <string>Volleyball</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">btnGrpHobbies</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QCheckBox" name="checkBox_4">
+        <widget class="QCheckBox" name="cbFootball">
          <property name="text">
           <string>Football</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">btnGrpHobbies</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="cbBasketball">
          <property name="text">
           <string>Basketball</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">btnGrpHobbies</string>
+         </attribute>
         </widget>
        </item>
       </layout>
@@ -257,9 +278,15 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="OkBtn">
        <property name="text">
         <string>OK</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -277,7 +304,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="CancelBtn">
        <property name="text">
         <string>Cancel</string>
        </property>
@@ -302,4 +329,12 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="btnGrpHobbies">
+   <property name="exclusive">
+    <bool>false</bool>
+   </property>
+  </buttongroup>
+  <buttongroup name="btnGrpGender"/>
+ </buttongroups>
 </ui>

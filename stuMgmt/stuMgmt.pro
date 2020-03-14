@@ -11,3 +11,5 @@ INCLUDEPATH += .
 HEADERS += addStuDlg.h
 FORMS += addStuDlg.ui
 SOURCES += addStuDlg.cpp main.cpp
+
+QMAKE_CXXFLAGS += -g -O0
