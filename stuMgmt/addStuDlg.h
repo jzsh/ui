@@ -16,6 +16,7 @@ public:
 private slots:
 	void slotOkBtnClicked();
     void slotCancelClicked();
+    void slotEditingFinished();
 
 private:
     Ui::addStuDlg *ui;

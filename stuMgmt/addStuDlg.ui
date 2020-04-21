@@ -86,7 +86,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="leID"/>
+      <widget class="QLineEdit" name="leID">
+       <property name="placeholderText">
+        <string>Please input 6~10 bit id</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

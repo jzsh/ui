@@ -8,8 +8,8 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 # Input
-HEADERS += addStuDlg.h
-FORMS += addStuDlg.ui
-SOURCES += addStuDlg.cpp main.cpp
+HEADERS += addStuDlg.h StuMgmtMainWindow.h QueryStuDlg.h
+FORMS += addStuDlg.ui StuMgmtMainWindow.ui QueryStuDlg.ui
+SOURCES += addStuDlg.cpp StuMgmtMainWindow.cpp main.cpp QueryStuDlg.cpp
 
 QMAKE_CXXFLAGS += -g -O0

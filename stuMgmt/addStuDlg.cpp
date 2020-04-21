@@ -13,6 +13,7 @@ QDialog(parent),
 	// connect signal and slot
 	connect(ui->OkBtn, SIGNAL(clicked()), this, SLOT(slotOkBtnClicked()));
 	connect(ui->CancelBtn, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+	connect(ui->leID, SIGNAL(editingFinished()), this, SLOT(slotEditingFinished()));
 
 	// init
 	for(int i=1; i<100; i++) {
@@ -20,7 +21,7 @@ QDialog(parent),
 	}
 	ui->cbbAge->setCurrentIndex(20);
 
-	ui->cbbDepat->addItem("Auot College");
+	ui->cbbDepat->addItem("Automatical College");
 	ui->cbbDepat->addItem("Electronic College");
 	ui->cbbDepat->addItem("Computer College");
 }
@@ -38,24 +39,27 @@ void addStuDlg::slotOkBtnClicked()
     QString gender=ui->btnGrpGender->checkedButton()->text();
     QString age=ui->cbbAge->currentText();
     QString dev=ui->cbbDepat->currentText();
-    QList<QAbstractButton*> ins_list=ui->btnGrpHobbies->buttons();
-    QString ins;
-    for(int i=0;i<ins_list.length();i++)
+    QList<QAbstractButton*> interest_list=ui->btnGrpHobbies->buttons();
+    QString interest;
+    for(int i=0;i<interest_list.length();i++)
     {
-        QAbstractButton* che=ins_list[i];
+        QAbstractButton* che=interest_list[i];
         if(che->isChecked())
         {
-            ins+=che->text()+" ";
+            interest+=che->text()+" ";
         }
     }
 
-    QString content=name+'\n'+id+'\n'+gender+'\n'+age+'\n'+dev+'\n'+ins;
-    QString cnt=name+" "+id+" "+gender+" "+age+" "+dev+" "+ins+'\n';
-    if(name.length()<1||id.length()<10||ins.length()<1){
+    QString content=name+'\n'+id+'\n'+gender+'\n'+age+'\n'+dev+'\n'+interest;
+    QString cnt=name+" "+id+" "+gender+" "+age+" "+dev+" "+interest+'\n';
+    if(name.length()<1 || id.length()<5 || interest.length()<1)
+	{
         QMessageBox::critical(this,"Error","Imcomplete infomation, please rewrite","Comfirm");
-    }else{
-        int ret=QMessageBox::information(this,"Please comfirm",content,"OK","Cancel");
-        if(0==ret)
+    }
+	else
+	{
+		QMessageBox::StandardButton ret = QMessageBox::information(this,"Please comfirm",content, QMessageBox::Ok|QMessageBox::Cancel, QMessageBox::Cancel);
+        if(ret == QMessageBox::Ok)
         {
 			qDebug() << "writeToFile";
 //             clearUserInterface();
@@ -70,7 +74,15 @@ void addStuDlg::slotCancelClicked()
     this->close();
 }
 
-void addStuDlg::writeToFile(QString cnt)
+void addStuDlg::slotEditingFinished()
+{
+    QString id = ui->leID->text();
+	if(id.length() < 6 || id.length() > 10) {
+		qDebug() << "error id";
+	}
+}
+
+void addStuDlg::writeToFile(QString content)
 {
 	QFile file("stu.txt");
 	if(!file.open(QIODevice::Append|QIODevice::Text))
@@ -79,7 +91,7 @@ void addStuDlg::writeToFile(QString cnt)
 		return;
 	}
 	QTextStream out(&file);
-	out<<cnt;
+	out<<content;
 	file.close();
 }
 
