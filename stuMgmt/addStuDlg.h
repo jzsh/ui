@@ -12,7 +12,11 @@ class addStuDlg : public QDialog
 public:
     explicit addStuDlg(QWidget *parent = 0);
     ~addStuDlg();
+	void writeToFile(QString cnt);
 private slots:
+	void slotOkBtnClicked();
+    void slotCancelClicked();
+    void slotEditingFinished();
 
 private:
     Ui::addStuDlg *ui;
